@@ -153,6 +153,7 @@
       },
       homepage(xuehao){
           this.childmsg.uid=xuehao;
+          this.asideindex=xuehao;
       }
     },
     mounted() {
