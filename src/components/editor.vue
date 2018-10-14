@@ -103,24 +103,42 @@ export default {
           var d=new Date();
           var weekday=d.getDay();
           var day = d.getHours();
-          if(weekday<6&&weekday>=0&&status==='1'){
-            if(weekday<6&&weekday>0){
-              _this.$notify({
-                message:'请于周六到周日12点之间上传',
-                offset: 50,
-                type:'warning',
-                duration:1500,
-              });
-            }
-            if(weekday===0&&day>=12){
+          if(weekday<=5&&weekday>=0&&status==='1'){
+            switch(weekday){
+              case 5 :
+              if(day<18){
                 _this.$notify({
-                message:'请于周六到周日12点之间上传',
-                offset: 50,
-                type:'warning',
-                duration:1500,
-              });
-            }else{
-              _this.checktime(status);
+                  message:'请于周五下午6点到周日下午6点之间上传',
+                  offset: 50,
+                  type:'warning',
+                  duration:1500,
+                });
+              }else{
+                _this.checktime(status);
+              }
+              break;
+              case 6 :
+                _this.checktime(status);
+                break;
+              case 0 :
+              if(day>=18){
+                _this.$notify({
+                  message:'请于周五下午6点到周日下午6点之间上传',
+                  offset: 50,
+                  type:'warning',
+                  duration:1500,
+                });
+              }else{
+                _this.checktime(status);
+              }
+              break;
+              default : 
+              _this.$notify({
+                  message:'请于周五下午6点到周日下午6点之间上传',
+                  offset: 50,
+                  type:'warning',
+                  duration:1500,
+                });
             }
           }else{
            _this.checktime(status);
@@ -128,7 +146,13 @@ export default {
         },
       },
       mounted() {
-        var editor = new E('#div1', '#div2')
+        let _this =this;
+        document.onkeydown = function() {   
+          if(window.event.keyCode===27&&_this.$route.name==="editor"){
+            _this.upload('0');
+          }
+        } 
+        var editor = new E('#div1', '#div2');
         this.editor=editor;
         editor.create();
         if(this.msg.childmsg.id==null ||this.msg.childmsg.id=='' ){

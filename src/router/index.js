@@ -15,8 +15,8 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-        { path: '/', redirect: '/main' },
-        { path: '/root', component: guanliyuan },
+        { path: '/',name:'main', redirect: '/main' },
+        { path: '/root',name:'root', component: guanliyuan },
         {
             path: '/main',
             component: main,
