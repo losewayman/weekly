@@ -70,6 +70,7 @@ export default{
   },
   mounted(){
     let _this=this;
+    if(_this.msg.category!=''){
         _this.$http({
             method:'post',
             url:'./user/getUserList.action',
@@ -89,6 +90,7 @@ export default{
         })
         .catch(function(error){
         })
+    }
   }
 }
 </script>
