@@ -30,6 +30,7 @@ export default new Router({
                 { name: 'peoplewrite', path: '/peoplewrite', component: peoplewrite }
             ]
         },
-        { path: '*', component: notFound },
+        { path: '/wrong',name:'wrong', component: notFound },
+        { path: '*', redirect: '/wrong' },
     ]
 })
