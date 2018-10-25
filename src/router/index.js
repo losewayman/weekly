@@ -21,8 +21,8 @@ export default new Router({
             path: '/main',
             component: main,
             children: [
-                { name: 'editor', path: '/editor', component: Editor },
                 { name: 'homepage', path: '/homepage', component: homepage },
+                { name: 'editor', path: '/editor', component: Editor },
                 { name: 'collection', path: '/collection', component: collection },
                 { name: 'update', path: '/update', component: update },
                 { name: 'draft', path: '/draft', component: draft },
